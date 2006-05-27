@@ -1,0 +1,4 @@
+
+// use Thunderbird as the default external email app
+pref("network.protocol-handler.app.mailto", "/usr/bin/thunderbird");
+
