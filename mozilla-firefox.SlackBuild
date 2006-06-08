@@ -16,7 +16,7 @@ PKG=$TMP/package-mozilla-firefox
 # Thanks to the folks at the Mozilla Foundation for permission to
 # distribute this, and for all the great work!  :-)
 
-VERSION=1.5.0.3
+VERSION=1.5.0.4
 ARCH=i686
 LOCALE=bg
 BUILD=1
@@ -51,18 +51,21 @@ cp $PKG/usr/lib/firefox-$VERSION/icons/mozicon128.png $PKG/usr/share/pixmaps/fir
 echo "Prepring package..."
 mkdir $PKG/install
 cp $CWD/slack-desc $PKG/install/slack-desc
-mkdir -p $PKG/usr/src/slackbuild/firefox
-cp $CWD/mozilla-firefox-simple.diff $PKG/usr/src/slackbuild/firefox/mozilla-firefox-simple.diff
-cp $CWD/mozilla-firefox-thunderbird.txt $PKG/usr/src/slackbuild/firefox/mozilla-firefox-thunderbird.txt
-cp $CWD/mozilla-firefox.SlackBuild $PKG/usr/src/slackbuild/firefox/mozilla-firefox.SlackBuild
-cp $CWD/mozilla-firefox.desktop $PKG/usr/src/slackbuild/firefox/mozilla-firefox.desktop
-cp $CWD/slack-desc $PKG/usr/src/slackbuild/firefox/slack-desc
+mkdir -p $PKG/usr/src/slackbuilds/firefox
+cp $CWD/mozilla-firefox-simple.diff $PKG/usr/src/slackbuilds/firefox
+cp $CWD/mozilla-firefox-thunderbird.txt $PKG/usr/src/slackbuilds/firefox
+cp $CWD/mozilla-firefox.SlackBuild $PKG/usr/src/slackbuilds/firefox
+cp $CWD/mozilla-firefox.desktop $PKG/usr/src/slackbuilds/firefox
+cp $CWD/slack-desc $PKG/usr/src/slackbuilds/firefox
 
 echo "Building package..."
 cd $PKG
 makepkg -l y -c n $TMP/mozilla-firefox-$VERSION$LOCALE-$ARCH-$BUILD$MYIN.tgz 2>&1 >> $LOG
 cat $CWD/slack-desc > $TMP/mozilla-firefox-$VERSION$LOCALE-$ARCH-$BUILD$MYIN.txt
 md5sum $TMP/mozilla-firefox-$VERSION$LOCALE-$ARCH-$BUILD$MYIN.tgz > $TMP/mozilla-firefox-$VERSION$LOCALE-$ARCH-$BUILD$MYIN.tgz.md5
+
+echo "Cleaning up..."
+rm -r $PKG
 
 echo "All done."
 
