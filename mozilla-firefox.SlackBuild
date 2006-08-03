@@ -1,25 +1,20 @@
-#/bin/sh
+#!/bin/sh
+#
+# Slackware build script for Mozilla Firefox
+# Written by Georgi D. Sotirov <gdsotirov@dir.bg>
+#
 
 . /etc/slack-package.conf
 
-CWD=`pwd`
-TMP=${TMP:-/tmp}
-PKG=$TMP/package-mozilla-firefox
-
-# This is not a source build script.  Rather, it builds a Slackware
-# package from the official binary tarball available from mozilla.org.
-# Using the official binaries seems like the most direct way to satify
-# the Mozilla project's concerns about quality control (and thus to
-# provide the most quality-certified package possible), and therefore
-# be able to use the official trademarks and logos.
-#
-# Thanks to the folks at the Mozilla Foundation for permission to
-# distribute this, and for all the great work!  :-)
-
-VERSION=1.5.0.5
+NAME=mozilla-firefox
+VERSION=1.5.0.6
 ARCH=i686
 LOCALE=bg
 BUILD=1
+
+CWD=`pwd`
+TMP=${TMP:-/tmp}
+PKG=$TMP/package-$NAME
 
 LOG=$CWD/build.log
 
@@ -51,18 +46,18 @@ cp $PKG/usr/lib/firefox-$VERSION/icons/mozicon128.png $PKG/usr/share/pixmaps/fir
 echo "Prepring package..."
 mkdir $PKG/install
 cp $CWD/slack-desc $PKG/install/slack-desc
-mkdir -p $PKG/usr/src/slackbuilds/firefox
-cp $CWD/mozilla-firefox-simple.diff $PKG/usr/src/slackbuilds/firefox
-cp $CWD/mozilla-firefox-thunderbird.txt $PKG/usr/src/slackbuilds/firefox
-cp $CWD/mozilla-firefox.SlackBuild $PKG/usr/src/slackbuilds/firefox
-cp $CWD/mozilla-firefox.desktop $PKG/usr/src/slackbuilds/firefox
-cp $CWD/slack-desc $PKG/usr/src/slackbuilds/firefox
+mkdir -p $PKG/usr/src/slackbuilds/$NAME-$VERSION
+cp $CWD/mozilla-firefox-simple.diff $PKG/usr/src/slackbuilds/$NAME-$VERSION
+cp $CWD/mozilla-firefox-thunderbird.txt $PKG/usr/src/slackbuilds/$NAME-$VERSION
+cp $CWD/mozilla-firefox.SlackBuild $PKG/usr/src/slackbuilds/$NAME-$VERSION
+cp $CWD/mozilla-firefox.desktop $PKG/usr/src/slackbuilds/$NAME-$VERSION
+cp $CWD/slack-desc $PKG/usr/src/slackbuilds/$NAME-$VERSION
 
 echo "Building package..."
 cd $PKG
-makepkg -l y -c n $TMP/mozilla-firefox-$VERSION$LOCALE-$ARCH-$BUILD$MYIN.tgz 2>&1 >> $LOG
-cat $CWD/slack-desc > $TMP/mozilla-firefox-$VERSION$LOCALE-$ARCH-$BUILD$MYIN.txt
-md5sum $TMP/mozilla-firefox-$VERSION$LOCALE-$ARCH-$BUILD$MYIN.tgz > $TMP/mozilla-firefox-$VERSION$LOCALE-$ARCH-$BUILD$MYIN.tgz.md5
+makepkg -l y -c n $TMP/$NAME-$VERSION$LOCALE-$ARCH-$BUILD$MYIN.tgz 2>&1 >> $LOG
+cat $CWD/slack-desc > $TMP/$NAME-$VERSION$LOCALE-$ARCH-$BUILD$MYIN.txt
+md5sum $TMP/$NAME-$VERSION$LOCALE-$ARCH-$BUILD$MYIN.tgz > $TMP/$NAME-$VERSION$LOCALE-$ARCH-$BUILD$MYIN.tgz.md5
 
 echo "Cleaning up..."
 rm -r $PKG
