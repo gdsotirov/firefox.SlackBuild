@@ -1,10 +1,10 @@
 [Desktop Entry]
 Encoding=UTF-8
-Exec=MOZ_PLUGIN_PATH=/usr/lib/mozilla/plugins firefox %u
-Icon=/usr/share/pixmaps/firefox.png
+Exec=MOZ_PLUGIN_PATH=/usr/lib/mozilla/plugins firefox2 %u
+Icon=/usr/share/pixmaps/firefox2.png
 Type=Application
 Categories=Application;Network;
-Name=Firefox
+Name=Firefox 2
 Name[bn]=ফায়ারফক্স
 Name[eo]=Mozilo Fajrovulpo
 Name[fi]=Mozilla Firefox
