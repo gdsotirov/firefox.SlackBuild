@@ -1,0 +1,73 @@
+#!/bin/sh
+#
+# Slackware build script for Mozilla Firefox 2
+# Written by Georgi D. Sotirov <gdsotirov@dir.bg>
+#
+
+. /etc/slack-package.conf
+
+NAME=firefox
+VERSION='2.0b2'
+ARCH=i686
+LOCALE=bg
+BUILD=1
+
+CWD=`pwd`
+TMP=${TMP:-/tmp}
+PKG=$TMP/package-$NAME
+
+LOG=$CWD/build.log
+
+if [ ! -d $TMP ]; then
+  mkdir -p $TMP
+fi
+
+rm -rf $PKG
+mkdir -p $PKG/usr/lib
+cd $PKG/usr/lib
+
+echo "Extracting files..."
+tar xzf $CWD/firefox-$VERSION.tar.gz 2>&1 > $LOG
+mv firefox firefox-$VERSION
+ln -sf firefox-$VERSION firefox2
+cd firefox-$VERSION
+
+echo "Patching some files..."
+cat $CWD/firefox-simple.diff | sed s/VERSION/$VERSION/ | patch -p1 --verbose --backup --suffix=.orig 2>&1 >> $LOG
+cat $CWD/firefox-thunderbird.txt >> defaults/pref/firefox.js
+cp $PKG/usr/lib/firefox-$VERSION/firefox $PKG/usr/lib/firefox-$VERSION/firefox.old
+cat $PKG/usr/lib/firefox-$VERSION/firefox.old | sed 's/progname="$0"/progname=firefox/' > $PKG/usr/lib/firefox-$VERSION/firefox
+
+mkdir -p $PKG/usr/bin
+cd $PKG/usr/bin
+ln -sf ../lib/firefox-$VERSION/firefox firefox2
+bin_perms $PKG
+
+echo "Configuring environment..."
+install -d -m 755 $PKG/usr/share/applications
+install -m 644 $CWD/firefox2.desktop $PKG/usr/share/applications/firefox2.desktop
+install -d -m 755 $PKG/usr/share/pixmaps
+install -m 644 $PKG/usr/lib/firefox-$VERSION/icons/mozicon128.png $PKG/usr/share/pixmaps/firefox2.png
+
+echo "Prepring package..."
+install -d -m 755 $PKG/install
+install -m 644 $CWD/slack-desc $PKG/install/slack-desc
+install -d -m 755 $PKG/usr/src/slackbuilds/$NAME-$VERSION
+install -m 644 $CWD/firefox-simple.diff $PKG/usr/src/slackbuilds/$NAME-$VERSION
+install -m 644 $CWD/firefox-thunderbird.txt $PKG/usr/src/slackbuilds/$NAME-$VERSION
+install -m 644 $CWD/firefox.SlackBuild $PKG/usr/src/slackbuilds/$NAME-$VERSION
+install -m 644 $CWD/firefox2.desktop $PKG/usr/src/slackbuilds/$NAME-$VERSION
+install -m 644 $CWD/slack-desc $PKG/usr/src/slackbuilds/$NAME-$VERSION
+
+echo "Building package..."
+cd $PKG
+PKGNAME=$NAME-$VERSION$LOCALE-$ARCH-$BUILD$MYIN
+makepkg -l y -c n $PKG_DIR/$PKGNAME.tgz 2>&1 >> $LOG
+cat $CWD/slack-desc > $PKG_DIR/$PKGNAME.txt
+md5sum $PKG_DIR/$PKGNAME.tgz > $PKG_DIR/$PKGNAME.tgz.md5
+
+echo "Cleaning up..."
+rm -r $PKG
+
+echo "All done."
+
