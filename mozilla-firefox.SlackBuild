@@ -7,7 +7,7 @@
 . /etc/slack-package.conf
 
 NAME=mozilla-firefox
-VERSION=1.5.0.6
+VERSION=1.5.0.7
 ARCH=i686
 LOCALE=bg
 BUILD=1
@@ -47,11 +47,11 @@ echo "Prepring package..."
 mkdir $PKG/install
 cp $CWD/slack-desc $PKG/install/slack-desc
 mkdir -p $PKG/usr/src/slackbuilds/$NAME-$VERSION
-cp $CWD/mozilla-firefox-simple.diff $PKG/usr/src/slackbuilds/$NAME-$VERSION
-cp $CWD/mozilla-firefox-thunderbird.txt $PKG/usr/src/slackbuilds/$NAME-$VERSION
-cp $CWD/mozilla-firefox.SlackBuild $PKG/usr/src/slackbuilds/$NAME-$VERSION
-cp $CWD/mozilla-firefox.desktop $PKG/usr/src/slackbuilds/$NAME-$VERSION
-cp $CWD/slack-desc $PKG/usr/src/slackbuilds/$NAME-$VERSION
+cp $CWD/mozilla-firefox-simple.diff $PKG/usr/src/slackbuilds/$NAME-$VERSION$LOCALE
+cp $CWD/mozilla-firefox-thunderbird.txt $PKG/usr/src/slackbuilds/$NAME-$VERSION$LOCALE
+cp $CWD/mozilla-firefox.SlackBuild $PKG/usr/src/slackbuilds/$NAME-$VERSION$LOCALE
+cp $CWD/mozilla-firefox.desktop $PKG/usr/src/slackbuilds/$NAME-$VERSION$LOCALE
+cp $CWD/slack-desc $PKG/usr/src/slackbuilds/$NAME-$VERSION$LOCALE
 
 echo "Building package..."
 cd $PKG
