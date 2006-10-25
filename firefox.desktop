@@ -1,7 +1,7 @@
 [Desktop Entry]
 Encoding=UTF-8
-Exec=MOZ_PLUGIN_PATH=/usr/lib/mozilla/plugins firefox %u
-Icon=/usr/share/pixmaps/firefox.png
+Exec=firefox %u
+Icon=firefox
 Type=Application
 Categories=Application;Network;
 Name=Firefox
