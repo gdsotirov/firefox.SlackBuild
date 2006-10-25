@@ -1,12 +1,17 @@
-mozilla-firefox: mozilla-firefox (Mozilla Firefox Web browser)
-mozilla-firefox:
-mozilla-firefox: This project is a redesign of the Mozilla browser component written
-mozilla-firefox: using the XUL user interface language.  Firefox empowers you to
-mozilla-firefox: browse faster, more safely and more efficiently than with any other
-mozilla-firefox: browser.
-mozilla-firefox: Visit the Mozilla Firefox project online:
-mozilla-firefox:   http://www.mozilla.com/
-mozilla-firefox:
-mozilla-firefox: *** WARNING: This is the BULGARIAN localization of Firefox!!! ***
-mozilla-firefox:
-mozilla-firefox: Packaged by Georgi D. Sotirov <gdsotirov@dir.bg>
+firefox: Firefox (Web browser)
+firefox:
+firefox: The award-winning, free Web browser of the Mozilla Foundation. With
+firefox: Firefox you can browse the Web with confidence - it protects you from
+firefox: viruses, spyware and pop-ups. It is one of the most standards
+firefox: compliant browser. In this new beta release you can find:
+firefox:   * phishing protection
+firefox:   * search suggestions
+firefox:   * session restore
+firefox:   * support for JavaScript 1.7
+firefox:   * inline spell checking
+firefox:   * other improvements
+firefox: and as well visual refresh of the theme and user interface.
+firefox:
+firefox: *** WARNING: This is the BULGARIAN localization of Firefox!!! ***
+firefox:
+firefox: Packaged by Georgi D. Sotirov <gdsotirov@dir.bg>
