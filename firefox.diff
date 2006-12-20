@@ -1,9 +1,9 @@
 95,96c95,104
-< moz_libdir=/usr/local/lib/firefox-2.0
-< MRE_HOME=/usr/local/lib/mre/mre-2.0
+< moz_libdir=/usr/local/lib/firefox-2.0.0.1
+< MRE_HOME=/usr/local/lib/mre/mre-2.0.0.1
 ---
-> moz_libdir=/usr/lib/firefox-_VERSION_
-> MRE_HOME=/usr/lib/mre/mre-_VERSION_
+> moz_libdir=/usr/lib/firefox-VERSION
+> MRE_HOME=/usr/lib/mre/mre-VERSION
 > 
 > # Include /usr/lib/mozilla/plugins in the plugin path:
 > if [ "$MOZ_PLUGIN_PATH" ] ; then
