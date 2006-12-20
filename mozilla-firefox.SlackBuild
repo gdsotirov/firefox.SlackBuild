@@ -7,7 +7,7 @@
 . /etc/slack-package.conf
 
 NAME=mozilla-firefox
-VERSION=1.5.0.8
+VERSION=1.5.0.9
 ARCH=i686
 LOCALE=bg
 BUILD=1
@@ -16,8 +16,6 @@ CWD=`pwd`
 TMP=${TMP:-/tmp}
 PKG=$TMP/package-$NAME
 
-LOG=$CWD/build.log
-
 if [ ! -d $TMP ]; then
   mkdir -p $TMP
 fi
@@ -25,13 +23,13 @@ rm -rf $PKG
 mkdir -p $PKG/usr/lib
 ( cd $PKG/usr/lib
   echo "Extracting files..."
-  tar xzf $CWD/firefox-$VERSION.tar.gz 2>&1 > $LOG
+  tar xzf $CWD/firefox-$VERSION.tar.gz
   mv firefox firefox-$VERSION
   ln -sf firefox-$VERSION firefox
   cd firefox-$VERSION
   echo "Patching some files..."
-  cat $CWD/mozilla-firefox-simple.diff | sed s/VERSION/$VERSION/ | patch -p1 --verbose --backup --suffix=.orig 2>&1 >> $LOG
-  cat $CWD/mozilla-firefox-thunderbird.txt >> defaults/pref/firefox.js
+  cat $CWD/$NAME-simple.diff | sed s/VERSION/$VERSION/ | patch -p1 --verbose --backup --suffix=.orig
+  cat $CWD/$NAME-thunderbird.txt >> defaults/pref/firefox.js
 )
 mkdir -p $PKG/usr/bin
 ( cd $PKG/usr/bin
@@ -40,24 +38,25 @@ mkdir -p $PKG/usr/bin
 )
 echo "Configuring environment..."
 mkdir -p $PKG/usr/share/applications
-cp $CWD/mozilla-firefox.desktop $PKG/usr/share/applications/mozilla-firefox.desktop
+cp $CWD/$NAME.desktop $PKG/usr/share/applications/$NAME.desktop
 mkdir -p $PKG/usr/share/pixmaps
 cp $PKG/usr/lib/firefox-$VERSION/icons/mozicon128.png $PKG/usr/share/pixmaps/firefox.png
 echo "Prepring package..."
 mkdir $PKG/install
 cp $CWD/slack-desc $PKG/install/slack-desc
-mkdir -p $PKG/usr/src/slackbuilds/$NAME-$VERSION
-cp $CWD/mozilla-firefox-simple.diff $PKG/usr/src/slackbuilds/$NAME-$VERSION$LOCALE
-cp $CWD/mozilla-firefox-thunderbird.txt $PKG/usr/src/slackbuilds/$NAME-$VERSION$LOCALE
-cp $CWD/mozilla-firefox.SlackBuild $PKG/usr/src/slackbuilds/$NAME-$VERSION$LOCALE
-cp $CWD/mozilla-firefox.desktop $PKG/usr/src/slackbuilds/$NAME-$VERSION$LOCALE
+mkdir -p $PKG/usr/src/slackbuilds/$NAME-$VERSION$LOCALE
+cp $CWD/$NAME-simple.diff $PKG/usr/src/slackbuilds/$NAME-$VERSION$LOCALE
+cp $CWD/$NAME-thunderbird.txt $PKG/usr/src/slackbuilds/$NAME-$VERSION$LOCALE
+cp $CWD/$NAME.SlackBuild $PKG/usr/src/slackbuilds/$NAME-$VERSION$LOCALE
+cp $CWD/$NAME.desktop $PKG/usr/src/slackbuilds/$NAME-$VERSION$LOCALE
 cp $CWD/slack-desc $PKG/usr/src/slackbuilds/$NAME-$VERSION$LOCALE
 
 echo "Building package..."
+PKG_DIR=${PKG_DIR:-$TMP}
 cd $PKG
-makepkg -l y -c n $TMP/$NAME-$VERSION$LOCALE-$ARCH-$BUILD$MYIN.tgz 2>&1 >> $LOG
-cat $CWD/slack-desc > $TMP/$NAME-$VERSION$LOCALE-$ARCH-$BUILD$MYIN.txt
-md5sum $TMP/$NAME-$VERSION$LOCALE-$ARCH-$BUILD$MYIN.tgz > $TMP/$NAME-$VERSION$LOCALE-$ARCH-$BUILD$MYIN.tgz.md5
+makepkg -l y -c n $PKG_DIR/$NAME-$VERSION$LOCALE-$ARCH-$BUILD$MYIN.tgz
+cat $CWD/slack-desc > $PKG_DIR/$NAME-$VERSION$LOCALE-$ARCH-$BUILD$MYIN.txt
+md5sum $PKG_DIR/$NAME-$VERSION$LOCALE-$ARCH-$BUILD$MYIN.tgz > $PKG_DIR/$NAME-$VERSION$LOCALE-$ARCH-$BUILD$MYIN.tgz.md5
 
 echo "Cleaning up..."
 rm -r $PKG
