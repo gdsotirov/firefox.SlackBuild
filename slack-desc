@@ -1,17 +1,11 @@
 firefox: Firefox (Web browser)
 firefox:
-firefox: The award-winning, free Web browser of the Mozilla Foundation. With
-firefox: Firefox you can browse the Web with confidence - it protects you from
-firefox: viruses, spyware and pop-ups. It is one of the most standards
-firefox: compliant browser. In this new beta release you can find:
-firefox:   * phishing protection
-firefox:   * search suggestions
-firefox:   * session restore
-firefox:   * support for JavaScript 1.7
-firefox:   * inline spell checking
-firefox:   * other improvements
-firefox: and as well visual refresh of the theme and user interface.
-firefox:
-firefox: *** WARNING: This is the BULGARIAN localization of Firefox!!! ***
+firefox: The award-winning Web browser of the Mozilla Foundation allows you
+firefox: to browse faster, more secure, and fully customize your online life.
+firefox: In Firefox you can find features like search suggestions, inline
+firefox: spell checking of forms and other that make your online experience
+firefox: even better. And you can always extend browsers capabilities
+firefox: with a variety of extensions.
 firefox:
 firefox: Packaged by Georgi D. Sotirov <gdsotirov@dir.bg>
+firefox:
