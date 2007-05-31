@@ -1,6 +1,6 @@
 95,96c95,104
-< moz_libdir=/usr/local/lib/firefox-2.0.0.3
-< MRE_HOME=/usr/local/lib/mre/mre-2.0.0.3
+< moz_libdir=/usr/local/lib/firefox-2.0.0.4
+< MRE_HOME=/usr/local/lib/mre/mre-2.0.0.4
 ---
 > moz_libdir=/usr/lib/firefox-VERSION
 > MRE_HOME=/usr/lib/mre/mre-VERSION
