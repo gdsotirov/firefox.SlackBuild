@@ -9,7 +9,7 @@
 . /etc/slack-package.conf
 
 NAME=firefox
-VERSION=2.0.0.3
+VERSION=2.0.0.4
 ARCH=i686
 LOCALE=bg
 BUILD=1
