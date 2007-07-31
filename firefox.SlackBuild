@@ -8,10 +8,10 @@
 . ../slack-package.conf
 
 NAME=firefox
-VERSION=2.0.0.5
+VERSION=2.0.0.6
 ARCH=i686
 LOCALE=bg
-BUILD=2
+BUILD=1
 KDE_PATH=`kde-config --prefix`
 
 CWD=`pwd`
