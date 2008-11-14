@@ -1,6 +1,6 @@
 #!/bin/sh
 #
-# Slackware build script for Mozilla Firefox 2
+# Slackware build script for Mozilla Firefox 3
 # Written by Georgi D. Sotirov <gdsotirov@dir.bg>
 # Based on the original script by Patrick Volkerding <volkerdi@slackware.com>
 #
@@ -8,7 +8,7 @@
 . ../slack-package.conf
 
 NAME=firefox
-VERSION=2.0.0.14
+VERSION=3.0.4
 ARCH=i686
 LOCALE=bg
 BUILD=1
@@ -27,23 +27,25 @@ mkdir -p $PKG/usr/lib
 
 ( cd $PKG/usr/lib
   echo "*** Extracting files..."
-  tar -zxvf $CWD/$NAME-$VERSION.tar.gz
+  tar -jxvf $CWD/$NAME-$VERSION.tar.bz2
   mv $NAME $NAME-$VERSION
   ln -sf $NAME-$VERSION $NAME
   cd $NAME-$VERSION
 
   echo "*** Patching some files..."
-  cat $CWD/$NAME.diff | sed s/VERSION/$VERSION/ | patch --verbose --backup --suffix=.orig $NAME || exit 1
-  if [ ! $? == 0 ]; then
-    exit 1
-  fi
+  patch -p1 < $CWD/$NAME-$VERSION.diff || exit 1
   cat $CWD/$NAME-thunderbird.txt >> defaults/pref/firefox.js
+)
+
+mkdir -p $PKG/usr/bin
+( cd $PKG/usr/bin
+  ln -sf /usr/lib/$NAME-$VERSION/$NAME .
 )
 
 # These files/directories are usually created if Firefox is run as root, which on many
 # systems might (and possibly should) be never.  Therefore, if we don't see them we'll
 # put stubs in place to prevent startup errors.
-( cd $PKG/usr/lib/$NAME-$VERSION
+( cd $PKG/usr/lib/firefox-$VERSION
   if [ -d extensions/talkback\@mozilla.org ]; then
     if [ ! -r extensions/talkback\@mozilla.org/chrome.manifest ]; then
       echo > extensions/talkback\@mozilla.org/chrome.manifest
@@ -52,11 +54,6 @@ mkdir -p $PKG/usr/lib
   if [ ! -d updates ]; then
     mkdir -p updates/0
   fi
-)
-
-mkdir -p $PKG/usr/bin
-( cd $PKG/usr/bin
-  ln -sf /usr/lib/$NAME-$VERSION/$NAME .
 )
 
 echo "*** Configuring environment..."
@@ -85,22 +82,26 @@ bin_perms $PKG
 
 # Documentation
 install -m 755 -d $PKG/usr/doc/$NAME-$VERSION$LOCALE
-install -m 644 $PKG/usr/lib/$NAME-$VERSION/readme.txt \
+install -m 644 $PKG/usr/lib/$NAME-$VERSION/README.txt \
                $PKG/usr/doc/$NAME-$VERSION$LOCALE/README
 install -m 644 $CWD/MPLLIC    $PKG/usr/doc/$NAME-$VERSION$LOCALE/COPYING
 
 # Install info
 install -m 755 -d $PKG/install
-install -m 644 $CWD/slack-desc $PKG/install/slack-desc
+install -m 644 $CWD/slack-desc     $PKG/install/slack-desc
+install -m 644 $CWD/slack-required $PKG/install/slack-required
+install -m 644 $CWD/slack-suggests $PKG/install/slack-suggests
 
 # Build information
-install -m 755 -d $PKG/usr/src/slackbuilds/$NAME-$VERSION$LOCALE
-install -m 644 $CWD/$NAME.diff               $PKG/usr/src/slackbuilds/$NAME-$VERSION$LOCALE
-install -m 644 $CWD/$NAME-thunderbird.txt    $PKG/usr/src/slackbuilds/$NAME-$VERSION$LOCALE
-install -m 644 $CWD/$NAME.SlackBuild         $PKG/usr/src/slackbuilds/$NAME-$VERSION$LOCALE
-install -m 644 $CWD/$NAME.desktop            $PKG/usr/src/slackbuilds/$NAME-$VERSION$LOCALE
-install -m 644 $CWD/slack-desc               $PKG/usr/src/slackbuilds/$NAME-$VERSION$LOCALE
-install -m 644 $CWD/MPLLIC                   $PKG/usr/src/slackbuilds/$NAME-$VERSION$LOCALE
+SBDIR=$PKG/usr/src/slackbuilds/$NAME-$VERSION$LOCALE
+install -m 755 -d $SBDIR
+install -m 644 $CWD/slack-desc          $SBDIR/slack-desc
+install -m 644 $CWD/slack-required      $SBDIR/slack-required
+install -m 644 $CWD/slack-suggests      $SBDIR/slack-suggests
+install -m 644 $CWD/$NAME.desktop       $SBDIR/$NAME.desktop
+install -m 644 $CWD/MPLLIC              $SBDIR/MPLLIC
+install -m 644 $CWD/$NAME-$VERSION.diff $SBDIR/$NAME-$VERSION.diff
+install -m 644 $CWD/$NAME.SlackBuild    $SBDIR/$NAME.SlackBuild
 
 echo "*** Building package..."
 PKG_DIR=${PKG_DIR:-$TMP}
