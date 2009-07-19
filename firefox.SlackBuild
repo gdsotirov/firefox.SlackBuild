@@ -1,14 +1,16 @@
 #!/bin/sh
 #
-# Slackware build script for Mozilla Firefox 3
+# Slackware build script for Mozilla Firefox 3.5
 # Written by Georgi D. Sotirov <gdsotirov@dir.bg>
 # Based on the original script by Patrick Volkerding <volkerdi@slackware.com>
 #
+# This is not a source build script.  Rather, it builds a Slackware
+# package from the official binary tarball available from mozilla.org.
 
 . ../slack-package.conf
 
 NAME=firefox
-VERSION=3.0.11
+VERSION=3.5.1
 ARCH=i686
 LOCALE=bg
 BUILD=1
@@ -18,24 +20,31 @@ CWD=`pwd`
 TMP=${TMP:-/tmp}
 PKG=$TMP/package-$NAME
 
-if [ ! -d $TMP ]; then
-  mkdir -p $TMP
+if [ ! -e $TMP ]; then
+  mkdir -p $TMP # location to build the source
 fi
 
-rm -rf $PKG
+SRC=$TMP/$NAME-$VERSION
+if [ -e $SRC -a -d $SRC ]; then
+   echo "Source directory '$SRC' already exists! Plaese, move it or remove it."
+   exit 1
+fi
+
+PKG=$TMP/package-$NAME
+if [ -e $PKG -a -d $PKG ]; then
+  echo "Package creation directory '$PKG' already exists! Please, move it or remove it."
+  exit 2
+fi
 mkdir -p $PKG/usr/lib
 
-( cd $PKG/usr/lib
-  echo "*** Extracting files..."
-  tar -jxvf $CWD/$NAME-$VERSION.tar.bz2
-  mv $NAME $NAME-$VERSION
-  ln -sf $NAME-$VERSION $NAME
-  cd $NAME-$VERSION
+cd $PKG/usr/lib
+tar -jxvf $CWD/$NAME-$VERSION.tar.bz2
+mv $NAME $NAME-$VERSION
+ln -sf $NAME-$VERSION $NAME
+cd $NAME-$VERSION
 
-  echo "*** Patching some files..."
-  patch -p1 < $CWD/$NAME-$VERSION.diff || exit 1
-  cat $CWD/$NAME-thunderbird.txt >> defaults/pref/firefox.js
-)
+# Patching the distribution
+patch -p1 < $CWD/$NAME-$VERSION.diff || exit 1
 
 mkdir -p $PKG/usr/bin
 ( cd $PKG/usr/bin
@@ -56,7 +65,7 @@ mkdir -p $PKG/usr/bin
   fi
 )
 
-echo "*** Configuring environment..."
+# Creating environment integration items
 install -m 755 -d $PKG/usr/lib/mozilla/plugins
 install -m 755 -d $PKG/usr/share/applications
 install -m 644 $CWD/$NAME.desktop $PKG/usr/share/applications/$NAME.desktop
@@ -77,16 +86,15 @@ install -m 755 -d $PKG/usr/share/pixmaps
 convert $PKG/usr/lib/$NAME-$VERSION/icons/mozicon50.xpm \
         $PKG/usr/share/pixmaps/$NAME.png
 
-echo "*** Prepring package..."
 bin_perms $PKG
 
-# Documentation
+# Creating documentation
 install -m 755 -d $PKG/usr/doc/$NAME-$VERSION$LOCALE
 install -m 644 $PKG/usr/lib/$NAME-$VERSION/README.txt \
                $PKG/usr/doc/$NAME-$VERSION$LOCALE/README
 install -m 644 $CWD/MPLLIC    $PKG/usr/doc/$NAME-$VERSION$LOCALE/COPYING
 
-# Install info
+# Preparing package
 install -m 755 -d $PKG/install
 install -m 644 $CWD/slack-desc     $PKG/install/slack-desc
 install -m 644 $CWD/slack-required $PKG/install/slack-required
@@ -99,11 +107,10 @@ install -m 644 $CWD/slack-desc          $SBDIR/slack-desc
 install -m 644 $CWD/slack-required      $SBDIR/slack-required
 install -m 644 $CWD/slack-suggests      $SBDIR/slack-suggests
 install -m 644 $CWD/$NAME.desktop       $SBDIR/$NAME.desktop
-install -m 644 $CWD/MPLLIC              $SBDIR/MPLLIC
 install -m 644 $CWD/$NAME-$VERSION.diff $SBDIR/$NAME-$VERSION.diff
 install -m 644 $CWD/$NAME.SlackBuild    $SBDIR/$NAME.SlackBuild
 
-echo "*** Building package..."
+# Building package
 PKG_DIR=${PKG_DIR:-$TMP}
 cd $PKG
 PKGNAME=$NAME-$VERSION$LOCALE-$ARCH-$BUILD$MYIN
@@ -111,8 +118,8 @@ makepkg -l y -c n $PKG_DIR/$PKGNAME.tgz
 cat $CWD/slack-desc > $PKG_DIR/$PKGNAME.txt
 md5sum $PKG_DIR/$PKGNAME.tgz > $PKG_DIR/$PKGNAME.tgz.md5
 
-echo "*** Cleaning up..."
-rm -r $PKG
-
-echo "*** All done."
+# Clean up (optionally)
+if [ "$1" == "--cleanup" ]; then
+  rm -r $PKG
+fi
 
