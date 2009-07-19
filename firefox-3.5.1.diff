@@ -1,15 +1,27 @@
-diff -u -r firefox-orig/defaults/profile/mimeTypes.rdf firefox/defaults/profile/mimeTypes.rdf
---- firefox-orig/defaults/profile/mimeTypes.rdf	2005-06-21 17:59:35.000000000 +0300
-+++ firefox/defaults/profile/mimeTypes.rdf	2009-06-12 23:32:34.000000000 +0300
-@@ -1,11 +1,28 @@
+diff -U 3 -r firefox-orig/defaults/pref/firefox.js firefox/defaults/pref/firefox.js
+--- firefox-orig/defaults/pref/firefox.js	2009-07-15 19:26:49.000000000 +0300
++++ firefox/defaults/pref/firefox.js	2009-07-19 17:41:34.000000000 +0300
+@@ -762,3 +762,6 @@
+ // base url for the wifi geolocation network provider
+ pref("geo.wifi.uri", "https://www.google.com/loc/json");
+ 
++// use Thunderbird as the default external email app
++ pref("network.protocol-handler.app.mailto", "/usr/bin/thunderbird");
++
+diff -U 3 -r firefox-orig/defaults/profile/mimeTypes.rdf firefox/defaults/profile/mimeTypes.rdf
+--- firefox-orig/defaults/profile/mimeTypes.rdf	2009-07-15 20:10:33.000000000 +0300
++++ firefox/defaults/profile/mimeTypes.rdf	2009-07-19 17:40:27.000000000 +0300
+@@ -1,13 +1,28 @@
 -<?xml version="1.0"?>  
 -
--<RDF xmlns="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:NC="http://home.netscape.com/NC-rdf#">
+-<RDF xmlns="http://www.w3.org/1999/02/22-rdf-syntax-ns#" 
+-     xmlns:NC="http://home.netscape.com/NC-rdf#"
+-     xmlns:RDF="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
 -
 -  <Description about="urn:mimetypes"> 
 -    <NC:MIME-types> 
--	    <Seq about="urn:mimetypes:root"> 
--	    </Seq> 
+-      <Seq about="urn:mimetypes:root"> 
+-      </Seq> 
 -    </NC:MIME-types> 
 -  </Description> 
 -</RDF>
@@ -41,15 +53,15 @@ diff -u -r firefox-orig/defaults/profile/mimeTypes.rdf firefox/defaults/profile/
 +                   NC:prettyName="thunderbird"
 +                   NC:path="/usr/bin/thunderbird" />
 +</RDF:RDF>
-diff -u -r firefox-orig/firefox firefox/firefox
---- firefox-orig/firefox	2009-06-03 01:00:53.000000000 +0300
-+++ firefox/firefox	2009-06-12 23:32:34.000000000 +0300
-@@ -52,7 +52,15 @@
+diff -U 3 -r firefox-orig/firefox firefox/firefox
+--- firefox-orig/firefox	2009-07-15 19:26:46.000000000 +0300
++++ firefox/firefox	2009-07-19 17:40:27.000000000 +0300
+@@ -50,7 +50,15 @@
  #uncomment for debugging
  #set -x
  
--moz_libdir=/usr/local/lib/firefox-3.0.11
-+moz_libdir=/usr/lib/firefox-3.0.11
+-moz_libdir=/usr/local/lib/firefox-3.5.1
++moz_libdir=/usr/lib/firefox-3.5.1
 +
 +# Include /usr/lib/mozilla/plugins in the plugin path:
 +if [ "$MOZ_PLUGIN_PATH" ] ; then
