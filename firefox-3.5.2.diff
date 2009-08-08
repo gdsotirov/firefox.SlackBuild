@@ -60,8 +60,8 @@ diff -U 3 -r firefox-orig/firefox firefox/firefox
  #uncomment for debugging
  #set -x
  
--moz_libdir=/usr/local/lib/firefox-3.5.1
-+moz_libdir=/usr/lib/firefox-3.5.1
+-moz_libdir=/usr/local/lib/firefox-3.5.2
++moz_libdir=/usr/lib/firefox-3.5.2
 +
 +# Include /usr/lib/mozilla/plugins in the plugin path:
 +if [ "$MOZ_PLUGIN_PATH" ] ; then
