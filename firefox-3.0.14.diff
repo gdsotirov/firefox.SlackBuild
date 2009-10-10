@@ -1,6 +1,6 @@
-diff -u -r firefox-orig/defaults/profile/mimeTypes.rdf firefox/defaults/profile/mimeTypes.rdf
+diff -U 3 -r -N firefox-orig/defaults/profile/mimeTypes.rdf firefox/defaults/profile/mimeTypes.rdf
 --- firefox-orig/defaults/profile/mimeTypes.rdf	2005-06-21 17:59:35.000000000 +0300
-+++ firefox/defaults/profile/mimeTypes.rdf	2009-01-04 15:38:16.000000000 +0200
++++ firefox/defaults/profile/mimeTypes.rdf	2009-10-10 10:32:23.000000000 +0300
 @@ -1,11 +1,28 @@
 -<?xml version="1.0"?>  
 -
@@ -41,15 +41,15 @@ diff -u -r firefox-orig/defaults/profile/mimeTypes.rdf firefox/defaults/profile/
 +                   NC:prettyName="thunderbird"
 +                   NC:path="/usr/bin/thunderbird" />
 +</RDF:RDF>
-diff -u -r firefox-orig/firefox firefox/firefox
---- firefox-orig/firefox	2008-12-02 08:07:33.000000000 +0200
-+++ firefox/firefox	2009-01-04 15:38:16.000000000 +0200
+diff -U 3 -r -N firefox-orig/firefox firefox/firefox
+--- firefox-orig/firefox	2009-08-27 18:16:04.000000000 +0300
++++ firefox/firefox	2009-10-10 10:32:23.000000000 +0300
 @@ -52,7 +52,15 @@
  #uncomment for debugging
  #set -x
  
--moz_libdir=/usr/local/lib/firefox-3.0.5
-+moz_libdir=/usr/lib/firefox-3.0.5
+-moz_libdir=/usr/local/lib/firefox-3.0.14
++moz_libdir=/usr/lib/firefox-3.0.14
 +
 +# Include /usr/lib/mozilla/plugins in the plugin path:
 +if [ "$MOZ_PLUGIN_PATH" ] ; then
