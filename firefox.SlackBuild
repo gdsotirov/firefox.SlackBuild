@@ -10,7 +10,7 @@
 . ../slack-package.conf
 
 NAME=firefox
-VERSION=3.5.6
+VERSION=3.5.7
 ARCH=i686
 LOCALE=bg
 BUILD=1
