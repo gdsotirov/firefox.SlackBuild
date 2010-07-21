@@ -9,5 +9,5 @@ firefox: yet includes TraceMonkey JavaScript engine, which gives
 firefox: dramatically better performance than ever before.
 firefox: Of course, you can always extend browsers capabilities with a
 firefox: variety of extensions.
-firefox: This realase comes with Crash Protection.
+firefox:
 firefox: Packaged by Georgi D. Sotirov <gdsotirov@dir.bg>
