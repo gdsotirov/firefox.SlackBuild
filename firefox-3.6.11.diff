@@ -1,6 +1,6 @@
-diff -N -r -U 3 firefox-orig/defaults/pref/firefox.js firefox/defaults/pref/firefox.js
---- firefox-orig/defaults/pref/firefox.js	2010-08-25 01:21:05.000000000 +0300
-+++ firefox/defaults/pref/firefox.js	2010-09-08 22:30:27.000000000 +0300
+diff -urNad firefox-orig/defaults/pref/firefox.js firefox/defaults/pref/firefox.js
+--- firefox-orig/defaults/pref/firefox.js	2010-10-12 21:55:13.000000000 +0300
++++ firefox/defaults/pref/firefox.js	2010-10-21 20:14:39.000000000 +0300
 @@ -791,3 +791,6 @@
  
  pref("dom.ipc.plugins.enabled", false);
@@ -8,9 +8,9 @@ diff -N -r -U 3 firefox-orig/defaults/pref/firefox.js firefox/defaults/pref/fire
 +// use Thunderbird as the default external email app
 + pref("network.protocol-handler.app.mailto", "/usr/bin/thunderbird");
 +
-diff -N -r -U 3 firefox-orig/defaults/profile/mimeTypes.rdf firefox/defaults/profile/mimeTypes.rdf
---- firefox-orig/defaults/profile/mimeTypes.rdf	2010-08-25 01:27:58.000000000 +0300
-+++ firefox/defaults/profile/mimeTypes.rdf	2010-09-08 22:30:27.000000000 +0300
+diff -urNad firefox-orig/defaults/profile/mimeTypes.rdf firefox/defaults/profile/mimeTypes.rdf
+--- firefox-orig/defaults/profile/mimeTypes.rdf	2010-10-12 22:45:02.000000000 +0300
++++ firefox/defaults/profile/mimeTypes.rdf	2010-10-21 20:14:39.000000000 +0300
 @@ -1,13 +1,28 @@
 -<?xml version="1.0"?>  
 -
@@ -53,15 +53,15 @@ diff -N -r -U 3 firefox-orig/defaults/profile/mimeTypes.rdf firefox/defaults/pro
 +                   NC:prettyName="thunderbird"
 +                   NC:path="/usr/bin/thunderbird" />
 +</RDF:RDF>
-diff -N -r -U 3 firefox-orig/firefox firefox/firefox
---- firefox-orig/firefox	2010-08-25 01:20:50.000000000 +0300
-+++ firefox/firefox	2010-09-08 22:30:27.000000000 +0300
+diff -urNad firefox-orig/firefox firefox/firefox
+--- firefox-orig/firefox	2010-10-12 21:54:56.000000000 +0300
++++ firefox/firefox	2010-10-21 20:14:39.000000000 +0300
 @@ -50,7 +50,15 @@
  #uncomment for debugging
  #set -x
  
--moz_libdir=/usr/local/lib/firefox-3.6.10
-+moz_libdir=/usr/lib/firefox-3.6.10
+-moz_libdir=/usr/local/lib/firefox-3.6.11
++moz_libdir=/usr/lib/firefox-3.6.11
 +
 +# Include /usr/lib/mozilla/plugins in the plugin path:
 +if [ "$MOZ_PLUGIN_PATH" ] ; then
