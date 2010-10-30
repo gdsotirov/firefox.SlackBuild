@@ -1,6 +1,6 @@
-diff -N -r -U 3 firefox-orig/defaults/pref/firefox.js firefox/defaults/pref/firefox.js
---- firefox-orig/defaults/pref/firefox.js	2010-08-24 20:36:52.000000000 +0300
-+++ firefox/defaults/pref/firefox.js	2010-09-08 23:00:08.000000000 +0300
+diff -urNad firefox-orig/defaults/pref/firefox.js firefox/defaults/pref/firefox.js
+--- firefox-orig/defaults/pref/firefox.js	2010-10-27 06:24:14.000000000 +0300
++++ firefox/defaults/pref/firefox.js	2010-10-30 19:36:38.000000000 +0300
 @@ -761,3 +761,6 @@
  // base url for the wifi geolocation network provider
  pref("geo.wifi.uri", "https://www.google.com/loc/json");
@@ -8,9 +8,9 @@ diff -N -r -U 3 firefox-orig/defaults/pref/firefox.js firefox/defaults/pref/fire
 +// use Thunderbird as the default external email app
 + pref("network.protocol-handler.app.mailto", "/usr/bin/thunderbird");
 +
-diff -N -r -U 3 firefox-orig/defaults/profile/mimeTypes.rdf firefox/defaults/profile/mimeTypes.rdf
---- firefox-orig/defaults/profile/mimeTypes.rdf	2010-08-24 20:40:05.000000000 +0300
-+++ firefox/defaults/profile/mimeTypes.rdf	2010-09-08 23:00:10.000000000 +0300
+diff -urNad firefox-orig/defaults/profile/mimeTypes.rdf firefox/defaults/profile/mimeTypes.rdf
+--- firefox-orig/defaults/profile/mimeTypes.rdf	2010-10-27 06:27:29.000000000 +0300
++++ firefox/defaults/profile/mimeTypes.rdf	2010-10-30 19:36:38.000000000 +0300
 @@ -1,13 +1,28 @@
 -<?xml version="1.0"?>  
 -
@@ -53,15 +53,15 @@ diff -N -r -U 3 firefox-orig/defaults/profile/mimeTypes.rdf firefox/defaults/pro
 +                   NC:prettyName="thunderbird"
 +                   NC:path="/usr/bin/thunderbird" />
 +</RDF:RDF>
-diff -N -r -U 3 firefox-orig/firefox firefox/firefox
---- firefox-orig/firefox	2010-08-24 20:36:48.000000000 +0300
-+++ firefox/firefox	2010-09-08 23:00:11.000000000 +0300
+diff -urNad firefox-orig/firefox firefox/firefox
+--- firefox-orig/firefox	2010-10-27 06:24:05.000000000 +0300
++++ firefox/firefox	2010-10-30 19:36:38.000000000 +0300
 @@ -50,7 +50,15 @@
  #uncomment for debugging
  #set -x
  
--moz_libdir=/usr/local/lib/firefox-3.5.13
-+moz_libdir=/usr/lib/firefox-3.5.13
+-moz_libdir=/usr/local/lib/firefox-3.5.15
++moz_libdir=/usr/lib/firefox-3.5.15
 +
 +# Include /usr/lib/mozilla/plugins in the plugin path:
 +if [ "$MOZ_PLUGIN_PATH" ] ; then
