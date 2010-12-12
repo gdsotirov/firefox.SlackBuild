@@ -1,6 +1,6 @@
 diff -urNad firefox-orig/defaults/pref/firefox.js firefox/defaults/pref/firefox.js
---- firefox-orig/defaults/pref/firefox.js	2010-10-27 06:24:14.000000000 +0300
-+++ firefox/defaults/pref/firefox.js	2010-10-30 19:36:38.000000000 +0300
+--- firefox-orig/defaults/pref/firefox.js	2010-11-30 18:17:51.000000000 +0200
++++ firefox/defaults/pref/firefox.js	2010-12-12 23:29:07.000000000 +0200
 @@ -761,3 +761,6 @@
  // base url for the wifi geolocation network provider
  pref("geo.wifi.uri", "https://www.google.com/loc/json");
@@ -9,8 +9,8 @@ diff -urNad firefox-orig/defaults/pref/firefox.js firefox/defaults/pref/firefox.
 + pref("network.protocol-handler.app.mailto", "/usr/bin/thunderbird");
 +
 diff -urNad firefox-orig/defaults/profile/mimeTypes.rdf firefox/defaults/profile/mimeTypes.rdf
---- firefox-orig/defaults/profile/mimeTypes.rdf	2010-10-27 06:27:29.000000000 +0300
-+++ firefox/defaults/profile/mimeTypes.rdf	2010-10-30 19:36:38.000000000 +0300
+--- firefox-orig/defaults/profile/mimeTypes.rdf	2010-11-30 18:28:54.000000000 +0200
++++ firefox/defaults/profile/mimeTypes.rdf	2010-12-12 23:29:07.000000000 +0200
 @@ -1,13 +1,28 @@
 -<?xml version="1.0"?>  
 -
@@ -54,14 +54,14 @@ diff -urNad firefox-orig/defaults/profile/mimeTypes.rdf firefox/defaults/profile
 +                   NC:path="/usr/bin/thunderbird" />
 +</RDF:RDF>
 diff -urNad firefox-orig/firefox firefox/firefox
---- firefox-orig/firefox	2010-10-27 06:24:05.000000000 +0300
-+++ firefox/firefox	2010-10-30 19:36:38.000000000 +0300
+--- firefox-orig/firefox	2010-11-30 18:17:25.000000000 +0200
++++ firefox/firefox	2010-12-12 23:29:07.000000000 +0200
 @@ -50,7 +50,15 @@
  #uncomment for debugging
  #set -x
  
--moz_libdir=/usr/local/lib/firefox-3.5.15
-+moz_libdir=/usr/lib/firefox-3.5.15
+-moz_libdir=/usr/local/lib/firefox-3.5.16
++moz_libdir=/usr/lib/firefox-3.5.16
 +
 +# Include /usr/lib/mozilla/plugins in the plugin path:
 +if [ "$MOZ_PLUGIN_PATH" ] ; then
