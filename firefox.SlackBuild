@@ -1,6 +1,6 @@
 #!/bin/sh
 #
-# Slackware build script for Mozilla Firefox 3.5
+# Slackware build script for Mozilla Firefox 4
 # Written by Georgi D. Sotirov <gdsotirov@dir.bg>
 # Based on the original script by Patrick Volkerding <volkerdi@slackware.com>
 #
@@ -10,7 +10,7 @@
 . ../slack-package.conf
 
 NAME=firefox
-VERSION=3.6.16
+VERSION=4.0
 ARCH=i686
 LOCALE=bg
 BUILD=${BUILD:-1}
