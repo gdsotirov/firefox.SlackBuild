@@ -1,13 +1,13 @@
-firefox: Firefox (Web browser)
+firefox: Firefox (A Powerful Web Browser)
 firefox:
-firefox: The award-winning Web browser of the Mozilla Foundation has
-firefox: security, speed and new fetures that will change the way you use
-firefox: the Web. In the new Firefox you can find instant site id and
-firefox: improved malware protection. New features like private browsing
-firefox: and complete removal of visited site traces. The fastest Firefox
-firefox: yet includes TraceMonkey JavaScript engine, which gives
-firefox: dramatically better performance than ever before.
-firefox: Of course, you can always extend browsers capabilities with a
-firefox: variety of extensions.
+firefox:   The award-winning Web browser from Mozilla is better than ever -
+firefox: faster, safer, and easy to use.
+firefox:   Enjoy a better Web experience with improved tabbed browsing, spell
+firefox: checking, search suggestions, session restore, Web feeds (RSS), live
+firefox: titles, integrated search, live bookmarks, pop-up blocking, and
+firefox: more.
+firefox:   Stay secure on the Web with phishing protection, automated updates,
+firefox: and protection from spyware and online scams.
+firefox:   Personalize your browser with planty of extensions and themes.
 firefox:
 firefox: Packaged by Georgi D. Sotirov <gdsotirov@dir.bg>
