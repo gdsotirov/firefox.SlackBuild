@@ -1,6 +1,6 @@
 diff -urNad firefox-orig/defaults/pref/firefox.js firefox/defaults/pref/firefox.js
---- firefox-orig/defaults/pref/firefox.js	2011-03-19 23:11:26.000000000 +0200
-+++ firefox/defaults/pref/firefox.js	2011-03-23 19:42:42.000000000 +0200
+--- firefox-orig/defaults/pref/firefox.js	2011-04-20 22:45:50.000000000 +0300
++++ firefox/defaults/pref/firefox.js	2011-05-01 20:44:28.000000000 +0300
 @@ -791,3 +791,6 @@
  
  pref("dom.ipc.plugins.enabled", false);
@@ -9,8 +9,8 @@ diff -urNad firefox-orig/defaults/pref/firefox.js firefox/defaults/pref/firefox.
 + pref("network.protocol-handler.app.mailto", "/usr/bin/thunderbird");
 +
 diff -urNad firefox-orig/defaults/profile/mimeTypes.rdf firefox/defaults/profile/mimeTypes.rdf
---- firefox-orig/defaults/profile/mimeTypes.rdf	2011-03-19 23:13:08.000000000 +0200
-+++ firefox/defaults/profile/mimeTypes.rdf	2011-03-23 19:42:42.000000000 +0200
+--- firefox-orig/defaults/profile/mimeTypes.rdf	2011-04-21 00:29:47.000000000 +0300
++++ firefox/defaults/profile/mimeTypes.rdf	2011-05-01 20:44:28.000000000 +0300
 @@ -1,13 +1,28 @@
 -<?xml version="1.0"?>  
 -
@@ -54,14 +54,14 @@ diff -urNad firefox-orig/defaults/profile/mimeTypes.rdf firefox/defaults/profile
 +                   NC:path="/usr/bin/thunderbird" />
 +</RDF:RDF>
 diff -urNad firefox-orig/firefox firefox/firefox
---- firefox-orig/firefox	2011-03-19 23:11:25.000000000 +0200
-+++ firefox/firefox	2011-03-23 19:42:42.000000000 +0200
+--- firefox-orig/firefox	2011-04-20 22:45:39.000000000 +0300
++++ firefox/firefox	2011-05-01 20:44:28.000000000 +0300
 @@ -50,7 +50,15 @@
  #uncomment for debugging
  #set -x
  
--moz_libdir=/usr/local/lib/firefox-3.6.16
-+moz_libdir=/usr/lib/firefox-3.6.16
+-moz_libdir=/usr/local/lib/firefox-3.6.17
++moz_libdir=/usr/lib/firefox-3.6.17
 +
 +# Include /usr/lib/mozilla/plugins in the plugin path:
 +if [ "$MOZ_PLUGIN_PATH" ] ; then
