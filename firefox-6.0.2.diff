@@ -1,12 +1,12 @@
 diff -urNad firefox-orig/firefox firefox/firefox
---- firefox-orig/firefox	2011-08-30 21:33:29.000000000 +0300
-+++ firefox/firefox	2011-08-31 18:28:29.000000000 +0300
+--- firefox-orig/firefox	2011-09-03 01:38:21.000000000 +0300
++++ firefox/firefox	2011-09-10 10:28:29.000000000 +0300
 @@ -50,7 +50,15 @@
  #uncomment for debugging
  #set -x
  
--moz_libdir=/usr/local/lib/firefox-6.0.1
-+moz_libdir=/usr/lib/firefox-6.0.1
+-moz_libdir=/usr/local/lib/firefox-6.0.2
++moz_libdir=/usr/lib/firefox-6.0.2
 +
 +# Include /usr/lib/mozilla/plugins in the plugin path:
 +if [ "$MOZ_PLUGIN_PATH" ] ; then
