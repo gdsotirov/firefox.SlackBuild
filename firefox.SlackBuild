@@ -10,7 +10,7 @@
 . ../../slack-package.conf
 
 NAME=firefox
-VERSION=6.0.2
+VERSION=7.0
 ARCH=i686
 LOCALE=bg
 BUILD=${BUILD:-1}
@@ -42,9 +42,6 @@ tar -xvf $CWD/$NAME-$VERSION.tar.bz2
 mv $NAME $NAME-$VERSION
 ln -sf $NAME-$VERSION $NAME
 cd $NAME-$VERSION
-
-# Patching the distribution
-patch -p1 < $CWD/$NAME-$VERSION.diff || exit 1
 
 mkdir -p $PKG/usr/bin
 ( cd $PKG/usr/bin
@@ -107,7 +104,6 @@ install -m 644 $CWD/slack-desc          $SBDIR/slack-desc
 install -m 644 $CWD/slack-required      $SBDIR/slack-required
 install -m 644 $CWD/slack-suggests      $SBDIR/slack-suggests
 install -m 644 $CWD/$NAME.desktop       $SBDIR/$NAME.desktop
-install -m 644 $CWD/$NAME-$VERSION.diff $SBDIR/$NAME-$VERSION.diff
 install -m 644 $CWD/$NAME.SlackBuild    $SBDIR/$NAME.SlackBuild
 
 # Building package
