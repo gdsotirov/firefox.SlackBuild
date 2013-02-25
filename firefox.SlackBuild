@@ -10,7 +10,7 @@
 . ../../slack-package.conf
 
 NAME=firefox
-VERSION=18.0.2
+VERSION=19.0
 ARCH=${ARCH:-i686}
 LOCALE=bg
 BUILD=${BUILD:-1}
